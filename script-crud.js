@@ -4,7 +4,7 @@ const btnAdicionarTarefa = document.querySelector('.app__button--add-task')
 const formAdicionarTarefa = document.querySelector('.app__form-add-task')
 const textarea = document.querySelector('.app__form-textarea')
 const ulTarefas = document.querySelector('.app__section-task-list')
-
+const btnCancelar = document.querySelector('.app__form-footer__button--cancel')
 const tarefas = JSON.parse(localStorage.getItem('tarefas')) || []
 
 function atualizarTarefas () {
@@ -53,9 +53,16 @@ function criarElementoTarefa(tarefa) {
     return li
 }   
 
+function cancelarTarefa() {
+    textarea.value = ''
+    formAdicionarTarefa.classList.add('hidden')
+}
+
 btnAdicionarTarefa.addEventListener('click', () => {
     formAdicionarTarefa.classList.toggle('hidden')
 })
+
+btnCancelar.addEventListener('click', cancelarTarefa)
 
 formAdicionarTarefa.addEventListener('submit', (evento) => {
     evento.preventDefault();
